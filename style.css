@@ -1,0 +1,90 @@
+
+
+.foto{
+    position: relative;
+    float:right;
+    margin-top: -750px;
+}
+.form_reviews_title {
+    text-align: center;
+    font-size: 30px;
+  }
+  
+  .phone {
+    color: green;
+  }
+  
+  ol {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 60px;
+    margin-top: 60px;
+    list-style: none;
+    height: auto;
+  
+  }
+  
+  ol li a {
+    position: relative;
+    color: black;
+    height: auto;
+    padding: 15px 30px;
+    text-decoration: none;
+    bottom: 10%;
+    /* text-transform: uppercase; */
+  
+  }
+  
+  ol li a:hover {
+    background: rgb(58, 172, 13);
+    border-radius: 15px;
+  }
+  
+  .form_reviews {
+    position: relative;
+  }
+  input{
+border-radius: 15px;
+font-size: 20px;
+  }
+input:hover {
+    background: rgb(58, 172, 13);
+    border-radius: 15px;
+  }
+.container{
+  background-color:dimgrey ;
+}
+.row,image{
+  position:absolute;
+  width: 60%;
+  opacity: 0.5;
+ 
+}
+.leftinnerdiv{
+  position: absolute;
+  justify-content: center;
+  left: 50%;
+transform: translate(-50%,  0);
+width: 400px;
+margin: 20px;
+padding: 30px;
+
+}
+a{
+width: 350px;
+margin: 20px;
+padding: 30px;
+}
+
+
+
+
+/* 
+  <!-- <div class="collapse" id="collapseExample">
+  <div class="card card-body">
+      <form action="" method="POST">
+          <input type="text" name="new_login" class="form_control" style="width: auto;" value="">
+          <button type="submit" name="change_login" class="btn btn-warning">Изменить ИМЯ</button>
+      </form>
+  </div>
+</div> --> */
