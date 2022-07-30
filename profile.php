@@ -38,12 +38,14 @@ if (!$_SESSION['user']) {
         <div class="innerdiv">
             <div class="row"><img class="imglogo" src="./image/5.jpg"/></div>
             <div class="leftinnerdiv">
-                <a href="" class="btn btn-success" >Добавить книгу</a>
-                <a href="" class="btn btn-success" >Добавить группа</a>
+                <a href="./add book/add_book.php" class="btn btn-success" >Добавить книгу</a>
+                <a href="./add group/add_group.php" class="btn btn-success" >Добавить группа</a>
                 <a href="./add teachr/add_teachr.php" class="btn btn-success" >Добавить переподователь</a>
                 <a href="" class="btn btn-success" >Посмотреть журналь</a>
                 <a href="" class="btn btn-success" >Посмотреть студенты</a>
                 <a href="./add teachr/view_teachr.php" class="btn btn-success" >Посмотреть переподователь</a>
+                <a href="./add book/view_book.php" class="btn btn-success" >Посмотреть книгу</a>
+                <a href="./add group/view_group.php" class="btn btn-success" >Посмотреть группа</a>
             </div>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>

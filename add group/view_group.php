@@ -32,24 +32,24 @@ require_once './vendor/connect.php';
   
     </tr>
   </thead>
-  <h3><p>Список переподователя</p></h3>
+  <h3><p>Список группу</p></h3>
     <?php
     
-    $add_teachrs=mysqli_query($connect,"SELECT * FROM `add_teachr`");
-    $add_teachrs=mysqli_fetch_all($add_teachrs);
- foreach ($add_teachrs as  $add_teachr) {
+    $add_groups=mysqli_query($connect,"SELECT * FROM `add_group`");
+    $add_groups=mysqli_fetch_all($add_groups);
+ foreach ($add_groups as  $add_group) {
    ?>
   
    <tr>
-    <!-- <td><?= $add_teachr[0]?></td> -->
-    <td><?= $add_teachr[1]?></td>
-    <td><?= $add_teachr[2]?></td>
-    <td><?= $add_teachr[3]?></td>
-    <td><?= $add_teachr[4]?></td>
-    <td><?= $add_teachr[5]?></td>
-    <td><?= $add_teachr[6]?></td>
-    <td><a class="btn btn-primary" href="../add teachr/update_teachr.php?id=<?= $add_teachr[0]?>">update</a></td>   
-    <td><a class="btn btn-danger" href="../add teachr/delete_teachr.php?id=<?=$add_teachr[0]?>">delete</a></td>   
+    <!-- <td><?= $add_group[0]?></td> -->
+    <td><?= $add_group[1]?></td>
+    <td><?= $add_group[2]?></td>
+    <td><?= $add_group[3]?></td>
+    <td><?= $add_group[4]?></td>
+    <td><?= $add_group[5]?></td>
+    <td><?= $add_group[6]?></td>
+    <td><a class="btn btn-primary" href="../add teachr/update_teachr.php?id=<?= $add_group[0]?>">update</a></td>   
+    <td><a class="btn btn-danger" href="../add group/delete_group.php?id=<?=$add_group[0]?>">delete</a></td>   
    </tr>
    <?php
  }

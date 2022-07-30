@@ -23,33 +23,34 @@ require_once './vendor/connect.php';
   <thead>
     <tr>
       <!-- <th scope="col">№</th> -->
-      <th scope="col">Имя</th>
-      <th scope="col">Фамилия</th>
-      <th scope="col">Email</th>
-      <th scope="col">Пол</th>
-      <th scope="col">Город</th>
-      <th scope="col" colspan="4">Должность</th>
+      <th scope="col">Имя книга </th>
+      <th scope="col">Серия </th>
+      <th scope="col">Автор</th>
+      <th scope="col">Год издание</th>
+      <th scope="col">Вес</th>
+      <th scope="col" colspan="3">Страница</th>
   
     </tr>
   </thead>
-  <h3><p>Список переподователя</p></h3>
+  <h3><p>Список книгу</p></h3>
     <?php
     
-    $add_teachrs=mysqli_query($connect,"SELECT * FROM `add_teachr`");
-    $add_teachrs=mysqli_fetch_all($add_teachrs);
- foreach ($add_teachrs as  $add_teachr) {
+    $add_books=mysqli_query($connect,"SELECT * FROM `add_book`");
+    $add_books=mysqli_fetch_all($add_books);
+ foreach ($add_books as  $add_book) {
    ?>
   
    <tr>
-    <!-- <td><?= $add_teachr[0]?></td> -->
-    <td><?= $add_teachr[1]?></td>
-    <td><?= $add_teachr[2]?></td>
-    <td><?= $add_teachr[3]?></td>
-    <td><?= $add_teachr[4]?></td>
-    <td><?= $add_teachr[5]?></td>
-    <td><?= $add_teachr[6]?></td>
-    <td><a class="btn btn-primary" href="../add teachr/update_teachr.php?id=<?= $add_teachr[0]?>">update</a></td>   
-    <td><a class="btn btn-danger" href="../add teachr/delete_teachr.php?id=<?=$add_teachr[0]?>">delete</a></td>   
+    <!-- <td><?= $add_book[0]?></td> -->
+    <td><?= $add_book[1]?></td>
+    <td><?= $add_book[2]?></td>
+    <td><?= $add_book[3]?></td>
+    <td><?= $add_book[4]?></td>
+    <td><?= $add_book[5]?></td>
+    <td><?= $add_book[6]?></td>
+    
+    <td><a class="btn btn-primary" href="../add book/update_book.php?id=<?= $add_book[0]?>">update</a></td>   
+    <td><a class="btn btn-danger" href="../add book/delete_book.php?id=<?=$add_book[0]?>">delete</a></td>   
    </tr>
    <?php
  }
