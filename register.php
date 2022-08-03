@@ -1,38 +1,75 @@
 <?php
-    session_start();
-    // header('Location: auth.php');
+
+require_once './vendor/connect.php';
+
+if(isset($_POST['submit'])){
+
+   $name = mysqli_real_escape_string($connect, $_POST['name']);
+   $email = mysqli_real_escape_string($connect, $_POST['email']);
+   $pass = md5($_POST['password']);
+   $cpass = md5($_POST['cpassword']);
+   $user_type = $_POST['user_type'];
+
+   $select = " SELECT * FROM user_db WHERE email = '$email' && password = '$pass' ";
+
+   $result = mysqli_query($connect, $select);
+
+   if(mysqli_num_rows($result) > 0){
+
+      $error[] = 'user already exist!';
+
+   }else{
+
+      if($pass != $cpass){
+         $error[] = 'password not matched!';
+      }else{
+         $insert = "INSERT INTO user_db(name, email, password, user_type) VALUES('$name','$email','$pass','$user_type')";
+         mysqli_query($connect, $insert);
+         header('location:auth.php');
+      }
+   }
+
+};
+
+
 ?>
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Авторизация и регистрация</title>
-    <link rel="stylesheet" href="assets/css/main.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- custom css file link  -->
+  <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
 </head>
 <body>
+<div class="form-container">
 
-    <!-- Форма регистрации -->
+<form action="" method="post">
+   <h3>register now</h3>
 
-    <form action="vendor/signup.php" method="post" >
-        <label>ФИО</label>
-        <input type="text" name="full_name" placeholder="Введите свое полное имя">
-        <label>Логин</label>
-        <input type="text" name="login" placeholder="Введите свой логин">
-        <label>Почта</label>
-        <input type="email" name="email" placeholder="Введите адрес своей почты">
-        <label>Пароль</label>
-        <input type="password" name="password" placeholder="Введите пароль">
-        <label>Подтверждение пароля</label>
-        <input type="password" name="password_confirm" placeholder="Подтвердите пароль">
-        <button type="submit" class="register-btn">Зарегистрироваться</button>
-        <p>
-            У вас уже есть аккаунт? - <a href="auth.php">авторизируйтесь</a>!
-        </p>
-        <a href="./index.php" style="color:red;" >Назад</a>
-        <p class="msg none">Lorem ipsum.</p>
-    </form>
-    <script src="assets/js/jquery-3.4.1.min.js"></script>
-    <script src="assets/js/main.js"></script>
+   <?php
+      if(isset($error)){
+         foreach($error as $error){
+            echo '<span class="error-msg">'.$error.'</span>';
+         };
+      };
+      ?>
+ 
+   <input type="text" name="name" required placeholder="enter your name">
+   <input type="email" name="email" required placeholder="enter your email">
+   <input type="password" name="password" required placeholder="enter your password">
+   <input type="password" name="cpassword" required placeholder="confirm your password">
+   <select name="user_type">
+      <option value="user">user</option>
+      <option value="admin">admin</option>
+   </select>
+   <input type="submit" name="submit" value="register now" class="form-btn">
+   <p>already have an account? <a href="./auth.php">login now</a></p>
+</form>
+
+</div>
 </body>
 </html>

@@ -13,49 +13,34 @@ require_once './vendor/connect.php';
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-    <title>view group</title>
+    <title>add teachr</title>
 
 
 </head>
 <body>
   <div class="view_teachr">
-<table border="5" class="table table-success table-striped">
+<table border="5"" class="table table-success table-striped">
   <thead>
     <tr>
-      <!-- <th scope="col">№</th> -->
-      <th scope="col">Названия группа</th>
-      <th scope="col">Старт группа</th>
-      <th scope="col">Количество человек в группе</th>
-      <th scope="col">Конец группа</th>
-      <th scope="col">Цена 1 урока руб</th>
-      <th scope="col" colspan="4">Стоимость месяц руб</th>
-  
+     
+      <th scope="col">Имя</th>
+      <th scope="col"></th>
     </tr>
   </thead>
-  <h3><p>Список группу</p></h3>
+  <h3><p>Список переподователя</p></h3>
     <?php
     
     $add_groups=mysqli_query($connect,"SELECT * FROM `add_group`");
     $add_groups=mysqli_fetch_all($add_groups);
  foreach ($add_groups as  $add_group) {
    ?>
-  
    <tr>
-    <!-- <td><?= $add_group[0]?></td> -->
     <td><?= $add_group[1]?></td>
-    <td><?= $add_group[2]?></td>
-    <td><?= $add_group[3]?></td>
-    <td><?= $add_group[4]?></td>
-    <td><?= $add_group[5]?></td>
-    <td><?= $add_group[6]?></td>
-    <td><a class="btn btn-primary" href="../add group/update_group.php?id=<?= $add_group[0]?>">update</a></td>   
-    <td><a class="btn btn-danger" href="../add group/delete_group.php?id=<?=$add_group[0]?>">delete</a></td>   
+    <td><a class="btn btn-success" href="./look_stident_in_group.php">Посмотрет студентов данной группый</a></td>   
    </tr>
    <?php
  }
-  
     ?>
- 
 </table>
 <a href="../profile.php" class="btn btn-danger"> выйты </a>
 </div>
