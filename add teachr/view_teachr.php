@@ -1,27 +1,32 @@
 <?php
 require_once './vendor/connect.php';
-
-$rowperpage = 5;
-$row = 0;
-// Previous Button
-if (isset($_POST['but_prev'])) {
-  $row = $_POST['row'];
-  $row -= $rowperpage;
-  if ($row < 0) {
-    $row = 0;
-  }
+if (isset($_GET['page'])) {
+  $page=$_GET['page'];
+}else{
+  $page=1;
 }
+
+$rowperpage = 05;
+$row = ($page -1)*05;
+// Previous Button
+// if (isset($_POST['but_prev'])) {
+//   $row = $_POST['row'];
+//   $row -= $rowperpage;
+//   if ($row < 0) {
+//     $row = 0;
+//   }
+// }
 
 // Next Button
-if (isset($_POST['but_next'])) {
-  $row = $_POST['row'];
-  $allcount = $_POST['allcount'];
+// if (isset($_POST['but_next'])) {
+//   $row = $_POST['row'];
+//   $allcount = $_POST['allcount'];
 
-  $val = $row + $rowperpage;
-  if ($val < $allcount) {
-    $row = $val;
-  }
-}
+//   $val = $row + $rowperpage;
+//   if ($val < $allcount) {
+//     $row = $val;
+//   }
+// }
 ?>
 
 <!DOCTYPE html>
@@ -70,20 +75,20 @@ if (isset($_POST['but_next'])) {
       $sql = "SELECT * FROM add_teachr  ORDER BY ID ASC limit $row," . $rowperpage;
       $result = mysqli_query($connect, $sql);
       $sno = $row + 1;
-      while ($fetch = mysqli_fetch_array($result)) {
+      while ($add_teacher = mysqli_fetch_array($result)) {
 
       ?>
 
         <tr>
-          <!-- <td><?= $fetch[0] ?></td> -->
-          <td><?= $fetch[1] ?></td>
-          <td><?= $fetch[2] ?></td>
-          <td><?= $fetch[3] ?></td>
-          <td><?= $fetch[4] ?></td>
-          <td><?= $fetch[5] ?></td>
-          <td><?= $fetch[6] ?></td>
-          <td><a class="btn btn-primary" href="../add teachr/update_teachr.php?id=<?= $fetch[0] ?>">update</a></td>
-          <td><a class="btn btn-danger " href="../add teachr/delete_teachr.php?id=<?= $fetch[0] ?>">delete</a></td>
+          <!-- <td><?= $add_teacher[0] ?></td> -->
+          <td><?= $add_teacher[1] ?></td>
+          <td><?= $add_teacher[2] ?></td>
+          <td><?= $add_teacher[3] ?></td>
+          <td><?= $add_teacher[4] ?></td>
+          <td><?= $add_teacher[5] ?></td>
+          <td><?= $add_teacher[6] ?></td>
+          <td><a class="btn btn-primary" href="../add teachr/update_teachr.php?id=<?= $add_teacher[0] ?>">update</a></td>
+          <td><a class="btn btn-danger " href="../add teachr/delete_teachr.php?id=<?= $add_teacher[0] ?>">delete</a></td>
         </tr>
       <?php
         $sno++;
@@ -92,7 +97,7 @@ if (isset($_POST['but_next'])) {
 
     </table>
     <!-- --------------------- нумерации-------------------------- -->
-    <form method="post" action="">
+    <!-- <form method="post" action="">
       <div id="div_pagination">
         <a href="../profile.php" class="btn btn-danger"> выйты </a>
         <input type="hidden" name="row" value="<?php echo $row; ?>">
@@ -100,7 +105,25 @@ if (isset($_POST['but_next'])) {
         <input type="submit" class="button" name="but_prev" value="Перед">
         <input type="submit" class="button" name="but_next" value="След">
       </div>
-    </form>
+    </form> -->
+    <a href="../profile.php" class="btn btn-danger"> выйты </a>
+    <!-- erer -->
+    <?php
+    $pr_query="SELECT * FROM add_teachr";
+    $pr_results=mysqli_query($connect,$pr_query);
+    $total_record=mysqli_num_rows($pr_results) ;
+    $total_page=$total_record/$rowperpage;
+
+    if ($page>1) {
+      echo"<a href='./view_teachr.php?page=".($page-1)."' class='btn btn-primary '>Перед</a>";
+    }
+    for ($i=1; $i < $total_page; $i++) { 
+      echo"<a href='./view_teachr.php?page=".$i."' class='btn btn-primary '>$i</a>";
+    }
+    if ($i>$page) {
+      echo"<a href='./view_teachr.php?page=".($page+1)."' class='btn btn-primary '>След</a>";
+    }
+?>
 
   </div>
 </body>
